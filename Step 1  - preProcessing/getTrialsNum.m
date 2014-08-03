@@ -1,7 +1,5 @@
 
-%% getTrialsNum
-
-
+function trialNum = getTrialsNum()
 sub  = {'324' '325' '326' '328' '329' '331' '332' '333' '334' '335' ...
         '336' '337' '340' '342' '344' '345' '346' '347' '348' '350'};
 condition = {'ActRec4' 'ActRec3' 'ActRec2' 'ActRec1' ...
@@ -24,4 +22,3 @@ for s = 1:size(sub,2)
         
     end
 end
-            

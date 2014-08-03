@@ -1,5 +1,5 @@
 
-function EEG = editEvents_v3(EEG)
+function EEG = editEvents_v2(EEG)
 
 
 for evt = 1:size(EEG.event,2);

@@ -5,7 +5,7 @@ subject =  {'324' '325' '326' '328' '329' '331' '332' '333' '334' '335' ...
 for s = 1:size(subject,2)
     fileName = [subject{s} '_0.5-40flt_M1M2ref_evtEditedv3_allEpochs_manRej'...
         '_ICA_dipFited_ICrm'];
-    source_filePath = ['F:\\study 3\\' subject{s} ];
+    source_filePath = ['F:\\study 3\\' subject{s}];
     destin_filePath = [source_filePath '\new epochs'];
     EEG = pop_loadset('filename',[fileName '.set'] ,'filepath',source_filePath);
     
