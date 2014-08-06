@@ -36,7 +36,6 @@ for s = 1:size(erspData.subject,2)
                 alphaLowData   = [];
                 alphaHighData  = [];
             end
-            
             allsubErsp_alpah(s,ind) = mean(mean(alphaData));
             allsubErsp_beta(s,ind)  = mean(mean(betaData));
             allsubErsp_low_alpah(s,ind) = mean(mean(alphaLowData));
