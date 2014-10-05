@@ -1,61 +1,56 @@
 %% create STUDY
 clear all
+
 %% 1. Paramteres:
-subjects = {'324' '325' '326' '328' '329' '331' '332' '333' '334' '335' ...
-            '336' '337' '340' '342' '344' '345' '346' '347' '348' '350'};
-fileNameInputExtensions    = ['_0.5-40flt_M1M2ref_evtEditedv3_allEpochs_manRej' ...
-                             '_ICA_dipFited_ICrm'];
-filePathInputExtentions    = {'F:\study 3\' '\new epochs'};
-conditionsInputExtentions  = {'ActRec4' 'ActRec1'};
-conditionsOutputExtentions = {'Recognized', 'Not Recognized'};
-count                      = 0;
-load('minTrlsNum.mat');
-minTrlsNum = minTrlsNum(:,[1 2]);
+do_dipfit = 0;
+subjects = {'324' '328' '329' '332' '334' ...
+                    '336' '340' '342' '345' '347' '348' '350'};
+%fileNameInputPattern = '_0.5-40flt_M1M2ref_evtEdited_clean-COelcs_rmICstrict_dipFitted'];
+fileNameInputPattern = '_0.5-40flt_M1M2ref_evtEditedv3_allEpochs_manRej_ICA_dipFited_ICrm';
+filePathInputPattern = {'F:\Study 3 - MNS response to invisible actions\EEG\Data\2nd_pool_data_oldPiplinePreProcessing\'};
+conds  = {'ActRec4' 'ActRec1' 'CtrlRec4', 'CtrlRec1', 'noCFSact', 'noCFSctrl'};
+count   = 0;
+% load('minTrlsNum.mat');
+% minTrlsNum = minTrlsNum(:,[1 2]);
 
-studyName     = 'humanRvsNR_20sub_equalTrlsNum_ICrm';
-equalTrls     = 0;
-studyNotes    = '';
+studyName  = '12subjects_withICA_allConds';
+studyNotes = '';
 
-%% 2. Prepare data sets and std_edit inputs :
-% open EEGLAB
-% if ~exist('EEG','var')
-%     eeglab;
-% end
-
-fileNames     = [];
-filePaths     = [];
+%% 2. Prepare std_edit inputs :
+fileNames = [];
+filePaths  = [];
 commandsStr   = [];
 for s = 1:size(subjects,2);
-    for c = 1:size(conditionsInputExtentions,2);
-        count             = count+1;
-        fileNames{count}  = [conditionsInputExtentions{c} '_' subjects{s} fileNameInputExtensions '.set'];
-        filePaths{count}  = [filePathInputExtentions{1} subjects{s} filePathInputExtentions{2} '\equalTrlsNum'];
-        if equalTrls
-            EEG        = pop_loadset(fileNames{count}, filePaths{count});
-            sind       = find(minTrlsNum(:,1) == str2double(subjects{s}));
-            if size(EEG.data,3) > minTrlsNum(sind,2);
-                EEG = pop_rejepoch( EEG, [minTrlsNum(sind,2):size(EEG.data,3)] ,0);
-            end
-            filePaths{count} = [filePaths{count} 'equalTrlsNum\'];
-            %mkdir([filePaths{count}]);
-            pop_saveset(EEG,'filename', fileNames{count}, 'filepath', filePaths{count});
+    for c = 1:size(conds,2);
+        count = count+1;
+        fileNames{count}  = [conds{c} '_' subjects{s} fileNameInputPattern '.set'];
+        filePaths{count}  = [filePathInputPattern{1} subjects{s} '\new epochs\'];
+        %% do dipole fitting
+        if do_dipfit
+            EEG  = pop_loadset('filename', [fileNames{count}], 'filepath', filePaths{count});
+            EEG = pop_dipfit_settings( EEG, 'hdmfile','C:\\toolbox\\eeglab12_0_1_0b\\plugins\\dipfit2.2\\standard_BESA\\standard_BESA.mat',...
+                'coordformat','Spherical', ...
+                'mrifile','C:\\toolbox\\eeglab12_0_1_0b\\plugins\\dipfit2.2\\standard_BESA\\avg152t1.mat', ...
+                'chanfile','C:\\toolbox\\eeglab12_0_1_0b\\plugins\\dipfit2.2\\standard_BESA\\standard-10-5-cap385.elp', ...
+                'chansel', 1:64);
+            EEG = pop_multifit(EEG, [1:70] ,'threshold',100,'dipplot','off');
+            fileNames{count} = [fileNames{count} '_dipFitted.set'];
+            EEG = pop_saveset(EEG, 'filename', [fileNames{count}], 'filepath', filePaths{count});
         end
-        commands{count*2-1} = {'index', count, 'subject', subjects{s}};
-        commands{count*2}   = {'index', count, 'condition', conditionsOutputExtentions{c}};
+        commands{count*3-2} = {'index', count, 'subject', subjects{s}};
+        commands{count*3-1} = {'index', count, 'condition', conds{c}};
+        commands{count*3} = {'inbrain', 'on', 'dipselect', 0.15};
     end
 end
 ALLEEG = std_loadalleeg(filePaths,fileNames);
 
 %% 3. create STUDY
-STUDY = [];
-[STUDY, ALLEEG] = pop_study([], ALLEEG, ...
-    'name',      studyName,   ...
-    'notes',     studyNotes);
+[STUDY, ALLEEG] = pop_study([], ALLEEG,  'name', studyName, 'notes', studyNotes);
 
 [STUDY, ALLEEG] = std_checkset(STUDY, ALLEEG);
 STUDY = pop_savestudy( STUDY, ALLEEG, ...
     'filename', [studyName '.study'], ...
-    'filepath', filePathInputExtentions{1}, ...
+    'filepath', filePathInputPattern{1}, ...
     'savemode', 'standard');
 
 %% 4. Edit Study
@@ -67,7 +62,7 @@ STUDY = pop_savestudy( STUDY, ALLEEG, ...
 [STUDY, ALLEEG] = std_checkset(STUDY, ALLEEG);
 STUDY = pop_savestudy( STUDY, ALLEEG, ...
     'filename', [studyName '.study'], ...
-    'filepath', filePathInputExtentions{1}, ...
+    'filepath', filePathInputPattern{1}, ...
     'savemode', 'standard');
 
 
