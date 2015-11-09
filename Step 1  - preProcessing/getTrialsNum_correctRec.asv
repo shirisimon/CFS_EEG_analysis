@@ -1,0 +1,28 @@
+
+function ansMat = getTrialsNum_correctRec()
+% for all types of actions - we get a martix table of rows as subjects and colums as cnf level that splits to true (correctly recognized)
+% and false (incorrectly recognized)
+sub  = {'324' '325' '326' '328' '329' '331' '332' '333' '334' '335' ...
+    '336' '340' '342' '344' '345' '346' '347' '348' '350'};  
+ansMat = zeros(length(sub),8);
+for s = 1:size(sub,2)
+    fileName = [sub{s}  '_0.5-40flt_AVGref']; 
+    filePath = ['C:\Research\Study 3 - MNS response to invisible actions\EEG\Data\2nd_pool_data_2ndPiplinePreProcessing\' sub{s} ]; %- liberal manRej'];
+    EEG = pop_loadset('filename',[fileName '.set'] ,'filepath',filePath);
+    EEG = editEvents_v2(EEG,1);
+    EEG = eeg_checkset(EEG);
+    
+    for e = 1:size(EEG.event,2);
+         % disp(EEG.event(e).type);
+        if EEG.event(e).type > 1000; % CFS stimulus onset
+            try
+            response = num2str(EEG.event(e).type); 
+            cnf = response(4); 
+            rec = response(3);
+            ansMat(s, str2double(cnf)*2 + str2double(rec)) = ansMat(s, str2double(cnf)*2+ str2double(rec)) +1;
+            catch err
+                continue
+            end
+        end
+    end
+end

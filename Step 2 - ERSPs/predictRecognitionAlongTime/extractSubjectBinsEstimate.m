@@ -1,0 +1,56 @@
+function [results, bins] = extractSubjectBinsEstimate()
+% predict recognition accuracy from baseline until estimated recognition
+
+path = 'C:\study3_MNS and conscious perception\Results\ERSPs\current\cfs_baseline_ERD\';
+subjects = {'324' '325' '326' '328' '329' '331' '332' '333' '334' '335' '336' ...
+            '340' '342' '345' '346' '347' '348'};
+bins = genereateBins([-250, 1500], 250, 50);
+
+idx = 0;
+for s = 1:size(subjects,2) % subjects
+    load([path, subjects{s} '_ERSP-elcs.mat']);
+    for e = 1:4;  % elcs (1-C3, 2-O1, 3-C4, 4-O2)
+        for b = 1:size(bins,1) % time bins
+            %% extract bin
+            onset  = find(timesout >= bins(b,1), 1);
+            offset = find(timesout >= bins(b,2), 1);
+            %% extract freqs
+            alpha  = [find(freqsout >= 8, 1), find(freqsout <= 13, 1, 'last')];
+            lalpha = [find(freqsout >= 8, 1), find(freqsout <= 10, 1, 'last')];
+            halpha = [find(freqsout >= 11, 1), find(freqsout <= 13, 1, 'last')];
+            beta   = [find(freqsout >= 15, 1), find(freqsout <= 25, 1, 'last')];
+            gamma  = [find(freqsout >= 30, 1), find(freqsout <= 40, 1, 'last')];
+            for c = 1:6 ; % conds (1-H_R, 2-H_NR, 3-NH_R 4-NH_NR, 5-H_NM, 6-NH_NM) 
+                idx = idx+1;
+                try
+                    alpah_data  = data(c).elc{e}.ERSP(alpha(1):alpha(2),onset:offset);
+                    beta_data   = data(c).elc{e}.ERSP(beta(1):beta(2),onset:offset);
+                    lalpha_data = data(c).elc{e}.ERSP(lalpha(1):lalpha(2),onset:offset);
+                    halpha_data = data(c).elc{e}.ERSP(halpha(1):halpha(2),onset:offset);
+                    gamma_data  = data(c).elc{e}.ERSP(gamma(1):gamma(2),onset:offset);
+                catch 
+                    alpah_data  = [];
+                    beta_data   = [];
+                    lalpha_data = []; 
+                    halpha_data = []; 
+                    gamma_data  = [];
+                end
+                results.alpha(:,s,e,idx,b)  = mean(mean(alpah_data));
+                results.beta(:,s,e,idx,b)   = mean(mean(beta_data));
+                results.lalpha_results(:,s,e,idx,b) = mean(mean(lalpha_data));
+                results.halpha_results(:,s,e,idx,b) = mean(mean(halpha_data));
+                results.gamma_results(:,s,e,idx,b)  = mean(mean(gamma_data));
+            end
+            idx = 0;
+        end
+    end  
+end
+
+end
+
+
+
+
+
+
+

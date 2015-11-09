@@ -1,0 +1,240 @@
+running 1trlERSP extraction for 325_R4
+ start time = 22-Jul-2015 14:02:06
+trial # 78 out of 79, 241.08 seconds passed from start
+98.7%[==============================]0.000873 hours left
+
+running 1trlERSP extraction for 325_R1
+ start time = 22-Jul-2015 14:06:04
+trial # 77 out of 78, 478.61 seconds passed from start
+98.7%[==============================]0.000849 hours left
+
+running SVM for 325
+ start time = 22-Jul-2015 14:57:17
+trial # 264 out of 265, 3551.33 seconds passed from start
+99.6%[==============================]0.003321 hours left
+
+running 1trlERSP extraction for 326_R4
+ start time = 22-Jul-2015 14:59:18
+trial # 35 out of 36, 3673.02 seconds passed from start
+97.2%[==============================]0.000877 hours left
+
+running 1trlERSP extraction for 326_R1
+ start time = 22-Jul-2015 15:01:08
+trial # 34 out of 35, 3783.13 seconds passed from start
+97.1%[==============================]0.000892 hours left
+
+running SVM for 326
+ start time = 22-Jul-2015 15:04:33
+trial # 264 out of 265, 3988.02 seconds passed from start
+99.6%[==============================]0.000210 hours left
+
+running 1trlERSP extraction for 328_R4
+ start time = 22-Jul-2015 15:06:37
+trial # 39 out of 40, 4111.59 seconds passed from start
+97.5%[==============================]0.000898 hours left
+
+running 1trlERSP extraction for 328_R1
+ start time = 22-Jul-2015 15:08:36
+trial # 38 out of 39, 4231.09 seconds passed from start
+97.4%[==============================]0.000869 hours left
+
+running SVM for 328
+ start time = 22-Jul-2015 15:13:23
+trial # 264 out of 265, 4518.14 seconds passed from start
+99.6%[==============================]0.000298 hours left
+
+running 1trlERSP extraction for 329_R4
+ start time = 22-Jul-2015 15:17:01
+trial # 68 out of 69, 4735.97 seconds passed from start
+98.6%[==============================]0.000887 hours left
+
+running 1trlERSP extraction for 329_R1
+ start time = 22-Jul-2015 15:20:42
+trial # 69 out of 70, 4956.58 seconds passed from start
+98.6%[==============================]0.000904 hours left
+
+running SVM for 329
+ start time = 22-Jul-2015 15:54:30
+trial # 264 out of 265, 6985.18 seconds passed from start
+99.6%[==============================]0.002060 hours left
+
+running 1trlERSP extraction for 331_R4
+ start time = 22-Jul-2015 15:58:55
+trial # 82 out of 83, 7250.10 seconds passed from start
+98.8%[==============================]0.000896 hours left
+
+running 1trlERSP extraction for 331_R1
+ start time = 22-Jul-2015 16:03:21
+trial # 83 out of 84, 7515.43 seconds passed from start
+98.8%[==============================]0.000880 hours left
+
+running SVM for 331
+ start time = 22-Jul-2015 17:08:33
+trial # 264 out of 265, 11428.07 seconds passed from start
+99.6%[==============================]0.004062 hours left
+
+running 1trlERSP extraction for 332_R4
+ start time = 22-Jul-2015 17:10:13
+trial # 27 out of 28, 11527.60 seconds passed from start
+96.4%[============================= ]0.000848 hours left
+
+running 1trlERSP extraction for 332_R1
+ start time = 22-Jul-2015 17:11:35
+trial # 26 out of 27, 11609.37 seconds passed from start
+96.3%[============================= ]0.000854 hours left
+
+running SVM for 332
+ start time = 22-Jul-2015 17:13:04
+trial # 264 out of 265, 11699.03 seconds passed from start
+99.6%[==============================]0.000089 hours left
+
+running 1trlERSP extraction for 333_R4
+ start time = 22-Jul-2015 17:14:54
+trial # 36 out of 37, 11808.81 seconds passed from start
+97.3%[==============================]0.000849 hours left
+
+running 1trlERSP extraction for 333_R1
+ start time = 22-Jul-2015 17:16:54
+trial # 38 out of 39, 11928.89 seconds passed from start
+97.4%[==============================]0.000866 hours left
+
+running SVM for 333
+ start time = 22-Jul-2015 17:21:13
+trial # 264 out of 265, 12187.48 seconds passed from start
+99.6%[==============================]0.000283 hours left
+
+running 1trlERSP extraction for 334_R4
+ start time = 22-Jul-2015 17:27:02
+trial # 111 out of 112, 12536.24 seconds passed from start
+99.1%[==============================]0.000907 hours left
+
+running 1trlERSP extraction for 334_R1
+ start time = 22-Jul-2015 17:32:30
+trial # 104 out of 105, 12864.73 seconds passed from start
+99.0%[==============================]0.000850 hours left
+
+running SVM for 334
+ start time = 22-Jul-2015 20:18:13
+trial # 264 out of 265, 22807.35 seconds passed from start
+99.6%[==============================]0.010336 hours left
+
+running 1trlERSP extraction for 335_R4
+ start time = 22-Jul-2015 20:20:59
+trial # 35 out of 36, 22973.93 seconds passed from start
+97.2%[==============================]0.000857 hours left
+
+running 1trlERSP extraction for 335_R1
+ start time = 22-Jul-2015 20:22:52
+trial # 36 out of 37, 23086.96 seconds passed from start
+97.3%[==============================]0.000848 hours left
+
+running SVM for 335
+ start time = 22-Jul-2015 20:26:27
+trial # 264 out of 265, 23301.73 seconds passed from start
+99.6%[==============================]0.000222 hours left
+
+running 1trlERSP extraction for 336_R4
+ start time = 22-Jul-2015 20:29:29
+trial # 59 out of 60, 23483.28 seconds passed from start
+98.3%[==============================]0.000878 hours left
+
+running 1trlERSP extraction for 336_R1
+ start time = 22-Jul-2015 20:32:34
+trial # 60 out of 61, 23668.73 seconds passed from start
+98.4%[==============================]0.000846 hours left
+
+running SVM for 336
+ start time = 22-Jul-2015 20:52:29
+trial # 264 out of 265, 24863.81 seconds passed from start
+99.6%[==============================]0.001257 hours left
+
+running 1trlERSP extraction for 340_R4
+ start time = 22-Jul-2015 20:55:49
+trial # 64 out of 65, 25063.66 seconds passed from start
+98.5%[==============================]0.000852 hours left
+
+running 1trlERSP extraction for 340_R1
+ start time = 22-Jul-2015 20:59:11
+trial # 65 out of 66, 25265.23 seconds passed from start
+98.5%[==============================]0.000852 hours left
+
+running SVM for 340
+ start time = 22-Jul-2015 21:25:26
+trial # 264 out of 265, 26840.81 seconds passed from start
+99.6%[==============================]0.001651 hours left
+
+running 1trlERSP extraction for 342_R4
+ start time = 22-Jul-2015 21:28:36
+trial # 59 out of 60, 27031.17 seconds passed from start
+98.3%[==============================]0.000857 hours left
+
+running 1trlERSP extraction for 342_R1
+ start time = 22-Jul-2015 21:31:37
+trial # 58 out of 59, 27211.68 seconds passed from start
+98.3%[==============================]0.000857 hours left
+
+running SVM for 342
+ start time = 22-Jul-2015 21:50:22
+trial # 264 out of 265, 28336.76 seconds passed from start
+99.6%[==============================]0.001190 hours left
+
+running 1trlERSP extraction for 345_R4
+ start time = 22-Jul-2015 21:53:21
+trial # 57 out of 58, 28515.58 seconds passed from start
+98.3%[==============================]0.000854 hours left
+
+running 1trlERSP extraction for 345_R1
+ start time = 22-Jul-2015 21:56:22
+trial # 58 out of 59, 28696.51 seconds passed from start
+98.3%[==============================]0.000863 hours left
+
+running SVM for 345
+ start time = 22-Jul-2015 22:14:00
+trial # 264 out of 265, 29754.37 seconds passed from start
+99.6%[==============================]0.001110 hours left
+
+running 1trlERSP extraction for 346_R4
+ start time = 22-Jul-2015 22:17:33
+trial # 68 out of 69, 29967.40 seconds passed from start
+98.6%[==============================]0.000855 hours left
+
+running 1trlERSP extraction for 346_R1
+ start time = 22-Jul-2015 22:21:01
+trial # 67 out of 68, 30175.84 seconds passed from start
+98.5%[==============================]0.000860 hours left
+
+running SVM for 346
+ start time = 22-Jul-2015 22:51:45
+trial # 264 out of 265, 32019.54 seconds passed from start
+99.6%[==============================]0.001936 hours left
+
+running 1trlERSP extraction for 347_R4
+ start time = 22-Jul-2015 22:54:37
+trial # 54 out of 55, 32191.88 seconds passed from start
+98.2%[==============================]0.000858 hours left
+
+running 1trlERSP extraction for 347_R1
+ start time = 22-Jul-2015 22:57:28
+trial # 55 out of 56, 32362.98 seconds passed from start
+98.2%[==============================]0.000859 hours left
+
+running SVM for 347
+ start time = 22-Jul-2015 23:12:11
+trial # 264 out of 265, 33245.43 seconds passed from start
+99.6%[==============================]0.000922 hours left
+
+running 1trlERSP extraction for 348_R4
+ start time = 22-Jul-2015 23:14:48
+trial # 50 out of 51, 33403.08 seconds passed from start
+98.0%[==============================]0.000867 hours left
+
+running 1trlERSP extraction for 348_R1
+ start time = 22-Jul-2015 23:17:22
+trial # 49 out of 50, 33556.32 seconds passed from start
+98.0%[==============================]0.000864 hours left
+
+running SVM for 348
+ start time = 22-Jul-2015 23:27:57
+trial # 264 out of 265, 34191.59 seconds passed from start
+99.6%[==============================]0.000673 hours left
+

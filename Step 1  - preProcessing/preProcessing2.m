@@ -1,18 +1,21 @@
 %% preProcessing2
 clear all
-subject = {'324' '325' '326' '328' '329' '331' '332' '333' '334' '335' '336'...
+% subject = {'345' '346' '347' '348' '350'};
+% subject = {'336' '340' '342' '344' '345' '346' '347' '348' '350'};
+subject = {'325' '326' '328' '329' '331' '332' '333' '334' '335' '336'...
     '340' '342' '344' '345' '346' '347' '348' '350'};
 for s = 1:size(subject,2);
     file_name = [subject{s} '_0.5-40flt_AVGref_evtEdited_allEpochs_ICA_clean-ICA'];
-    file_path = ['F:\\Study 3 - MNS response to invisible actions\\EEG\\Data\\' subject{s} '\\'];
+    file_path = ['C:\\study3_MNS and conscious perception\\data\\2nd_pool_data_2ndPiplinePreProcessing\\' ...
+                  subject{s} '\\'];
     EEG = pop_loadset('filename', [file_name '.set'], 'filepath', file_path);
     
     %% 7. run ICA
     % inspect the data when done (ICA spectra and maps + ICA scroll)
     % choose ICs of blinks and eye movements 2 remove from data
-    EEG = pop_runica(EEG, 'extended',1,'interupt','on', 'pca', 71);
+    EEG = pop_runica(EEG, 'extended',1,'interupt','on', 'pca', 69);
     EEG = eeg_checkset( EEG );
-    file_name = [file_name '_2ndICA'];
+    file_name = [file_name '_ICA2nd'];
     % EEG = pop_saveset( EEG, 'filename', [file_name '.set'] ,'filepath', file_path);
     
     %% 8. DIPFIT

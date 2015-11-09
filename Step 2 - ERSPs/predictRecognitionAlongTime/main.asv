@@ -1,0 +1,29 @@
+%% main
+clear all; close all; clc;
+
+% params
+do_shuffle = 0;
+
+params.factor = 1;
+params.c = 1;
+params.g = 1;
+
+[results, bins] = extractBinsEstimate();
+bins_center = (bins(:,1)+bins(:,2)) ./ 2;
+
+for b = 1:size(results.alpha,5)
+    for e = 1:size(results.alpha,3)
+        for s = 1:size(results.alpha,2)
+            dataR.alpha(s)  = results.alpha(:,s,e,1,b);
+            dataNR.alpha(s) = results.alpha(:,s,e,2,b);
+            dataR.beta(s)   = results.beta(:,s,e,1,b);
+            dataNR.beta(s)  = results.beta(:,s,e,2,b);
+        end
+        realacc.alpha(b,e) = doLeaveSubjectOutSVM(dataR.alpha', dataNR.alpha', params, [], 0); 
+        realacc.beta(b,e)  = doLeaveSubjectOutSVM(dataR.beta', dataNR.beta', params, [], 0);
+    end
+end
+
+x1 = mean([realacc.alpha(:,2), realacc.alpha(:,4)],2)
+plot(bins_center, realacc.alpha(:,2), 'b'); hold on; 
+plot(bins_center, realacc.beta(:,1), 'r')

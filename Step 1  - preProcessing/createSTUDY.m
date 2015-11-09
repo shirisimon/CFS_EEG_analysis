@@ -3,17 +3,18 @@ clear all
 
 %% 1. Paramteres:
 do_dipfit = 0;
-subjects = {'324' '328' '329' '332' '334' ...
-                    '336' '340' '342' '345' '347' '348' '350'};
-%fileNameInputPattern = '_0.5-40flt_M1M2ref_evtEdited_clean-COelcs_rmICstrict_dipFitted'];
+subjects = {'324' '325' '326' '328' '329' '331' '333' '332' '334' '335' ...
+                    '336' '340' '342' '345' '346' '347' '348'};
+% fileNameInputPattern = '_0.5-40flt_M1M2ref_locEpochs_clean_ICA_clean_ICA2nd_dipFited';
 fileNameInputPattern = '_0.5-40flt_M1M2ref_evtEditedv3_allEpochs_manRej_ICA_dipFited_ICrm';
-filePathInputPattern = {'F:\Study 3 - MNS response to invisible actions\EEG\Data\2nd_pool_data_oldPiplinePreProcessing\'};
-conds  = {'ActRec4' 'ActRec1' 'CtrlRec4', 'CtrlRec1', 'noCFSact', 'noCFSctrl'};
+filePathInputPattern = {'C:\study3_MNS and conscious perception\data\2nd_pool_data_1stPiplinePreProcessing\'};
+conds  = {'ActRec4' 'ActRec1'}; % 'CtrlRec4', 'CtrlRec1', 'noCFSact', 'noCFSctrl'};
+% conds  = {'noMask_act'};
 count   = 0;
 % load('minTrlsNum.mat');
 % minTrlsNum = minTrlsNum(:,[1 2]);
 
-studyName  = '12subjects_withICA_allConds';
+studyName  = '19subjects_withICA';
 studyNotes = '';
 
 %% 2. Prepare std_edit inputs :
@@ -24,10 +25,11 @@ for s = 1:size(subjects,2);
     for c = 1:size(conds,2);
         count = count+1;
         fileNames{count}  = [conds{c} '_' subjects{s} fileNameInputPattern '.set'];
-        filePaths{count}  = [filePathInputPattern{1} subjects{s} '\new epochs\'];
+        % fileNames{count}  = [subjects{s} fileNameInputPattern '.set'];
+        filePaths{count}  = [filePathInputPattern{1} '\' subjects{s} '\new epochs\equalTrlsNum\'];
         %% do dipole fitting
         if do_dipfit
-            EEG  = pop_loadset('filename', [fileNames{count}], 'filepath', filePaths{count});
+            EEG = pop_loadset('filename', [fileNames{count}], 'filepath', filePaths{count});
             EEG = pop_dipfit_settings( EEG, 'hdmfile','C:\\toolbox\\eeglab12_0_1_0b\\plugins\\dipfit2.2\\standard_BESA\\standard_BESA.mat',...
                 'coordformat','Spherical', ...
                 'mrifile','C:\\toolbox\\eeglab12_0_1_0b\\plugins\\dipfit2.2\\standard_BESA\\avg152t1.mat', ...
@@ -39,7 +41,7 @@ for s = 1:size(subjects,2);
         end
         commands{count*3-2} = {'index', count, 'subject', subjects{s}};
         commands{count*3-1} = {'index', count, 'condition', conds{c}};
-        commands{count*3} = {'inbrain', 'on', 'dipselect', 0.15};
+        commands{count*3} = {'inbrain', 'on', 'dipselect', 0.3};
     end
 end
 ALLEEG = std_loadalleeg(filePaths,fileNames);
